@@ -2,6 +2,7 @@
 
 class MapManager
 {
+    //.
     public static MapManager Instance = new MapManager();
     private char[,] map;
 
