@@ -31,7 +31,7 @@ class Renderer
             Console.WriteLine();
         }
 
-        // 상태 정보 출력
+        // 상태 정보 출력!
         Console.WriteLine($"EXP: {Player.Instance.Exp} | Level: {Player.Instance.Level} | Length: {Player.Instance.Body.Count} | Time: {GameManager.Instance.Tick / 10}s");
     }
 }

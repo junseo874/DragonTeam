@@ -22,7 +22,7 @@ class GameManager
     public bool IsRunning { get; set; }
     public int Tick { get; set; }
 
-    // 생성자는 외부에서 호출할 수 없도록 private로 설정
+    // 생성자는 외부에서 호출할 수 없도록 private로 설정!
     private GameManager()
     {
         // 초기화 로직 (필요한 경우 추가)
