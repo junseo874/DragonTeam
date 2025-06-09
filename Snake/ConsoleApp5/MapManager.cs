@@ -2,6 +2,9 @@
 
 class MapManager
 {
+    //진짜
+    //너무 피곤하다
+    //아무것도 안하고 싶음
     public static MapManager Instance = new MapManager();
     private char[,] map;
 
