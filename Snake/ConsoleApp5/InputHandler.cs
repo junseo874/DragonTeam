@@ -1,112 +1,87 @@
-﻿using System;
+﻿using SnakeGameRefactored;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static SnakeGameRefactored.SkillManager;
 
-class InputHandler
+namespace SnakeGameRefactored
 {
-    public static void HandleInput()
+    // InputHandler: 입력 처리
+    public static class InputHandler
     {
-        if (!Console.KeyAvailable) return; // 키 입력이 없으면 리턴
-
-        var key = Console.ReadKey(true).Key; // 키 입력 받기
-
-        // 플레이어 방향 설정
-        switch (key)
+        public static void HandleInput()
         {
-            case ConsoleKey.UpArrow when Player.Instance.DirY != 1:
-                Player.Instance.DirX = 0;
-                Player.Instance.DirY = -1;
-                break;
-
-            case ConsoleKey.DownArrow when Player.Instance.DirY != -1:
-                Player.Instance.DirX = 0;
-                Player.Instance.DirY = 1;
-                break;
-
-            case ConsoleKey.LeftArrow when Player.Instance.DirX != 1:
-                Player.Instance.DirX = -1;
-                Player.Instance.DirY = 0;
-                break;
-
-            case ConsoleKey.RightArrow when Player.Instance.DirX != -1:
-                Player.Instance.DirX = 1;
-                Player.Instance.DirY = 0;
-                break;
-
-            case ConsoleKey.Spacebar: // 스페이스바: 탄환 발사
-                ShootBullet();
-                break;
-
-            case ConsoleKey.C: // C: 복제체 생성
-                SpawnClone();
-                break;
-        }
-    }
-
-    private static void ShootBullet()
-    {
-        if (Player.Instance.Body.Count > 1) // 몸통이 2개 이상일 때만 발사 가능
-        {
-            if (Player.Instance.Body.Count > SkillManager.Instance.FixedBodyLength)
+            if (!Console.KeyAvailable) return;
+            var key = Console.ReadKey(true).Key;
+            switch (key)
             {
-                int bulletCount = 1;
-
-                // DoubleShot 스킬이 있는 경우 탄환 수 증가
-                if (SkillManager.Instance.HasSkill(SkillType.DoubleShot))
-                {
-                    int doubleShotLevel = SkillManager.Instance.GetSkillLevel(SkillType.DoubleShot);
-                    bulletCount = doubleShotLevel + 1;
-                    bulletCount = Math.Min(bulletCount, 7); // 최대 7개로 제한
-                }
-
-                int half = bulletCount / 2;
-
-                for (int i = 0; i < bulletCount; i++)
-                {
-                    int offsetX = i - half;
-                    BulletManager.Instance.AddBullet(Player.Instance.Body[0].x + offsetX, Player.Instance.Body[0].y);
-                }
-
-                // ContinuousShot 스킬이 있는 경우 연속 발사 추가
-                if (SkillManager.Instance.HasSkill(SkillType.ContinuousShot))
-                {
-                    int continuousShotLevel = SkillManager.Instance.GetSkillLevel(SkillType.ContinuousShot);
-                    var bullets = BulletManager.Instance.GetBullets();
-                    if (bullets != null) // Null 체크 추가
-                    {
-                        foreach (var bullet in bullets)
-                        {
-                            BulletManager.Instance.AddContinuousBullet(bullet, continuousShotLevel);
-                        }
-                    }
-                }
-
-                // 탄환 발사 시 몸통 줄이기
-                Player.Instance.Body.RemoveAt(Player.Instance.Body.Count - 1);
-            }
-        }
-    }
-
-    private static void SpawnClone()
-    {
-        if (SkillManager.Instance.HasSkill(SkillType.Clone) && CloneManager.Instance.Cooldown <= 0)
-        {
-            bool spawned = false;
-
-            for (int dy = -1; dy <= 1 && !spawned; dy++)
-            {
-                for (int dx = -1; dx <= 1 && !spawned; dx++)
-                {
-                    int nx = Player.Instance.Body[0].x + dx;
-                    int ny = Player.Instance.Body[0].y + dy;
-
-                    if (nx > 0 && nx < GameManager.Width - 1 &&
-                        ny > 0 && ny < GameManager.Height - 1 &&
-                        MapManager.Instance.GetCharAt(ny, nx) == ' ')
-                    {
-                        CloneManager.Instance.SpawnClone(nx, ny);
-                        CloneManager.Instance.Cooldown = 100; // 쿨다운 설정
-                        spawned = true;
-                    }
-                }
+                case ConsoleKey.UpArrow when Player.DirY != 1: Player.DirX = 0; Player.DirY = -1; break;
+                case ConsoleKey.DownArrow when Player.DirY != -1: Player.DirX = 0; Player.DirY = 1; break;
+                case ConsoleKey.LeftArrow when Player.DirX != 1: Player.DirX = -1; Player.DirY = 0; break;
+                case ConsoleKey.RightArrow when Player.DirX != -1: Player.DirX = 1; Player.DirY = 0; break;
+                case ConsoleKey.Spacebar:
+                    //if (Player.Snake.Count > 1)
+                    //{
+                    //    if (Player.Snake.Count > GameManager.FixedBodyLength)
+                    //    {
+                    //        int bulletCount = 1;
+                    //        if (SkillManager.HasSkill(SkillType.DoubleShot))
+                    //        {
+                    //            bulletCount = SkillManager.GetSkillLevel(SkillType.DoubleShot) + 1;
+                    //            bulletCount = Math.Min(bulletCount, 7);
+                    //        }
+                    //        int half = bulletCount / 2;
+                    //        for (int i = 0; i < bulletCount; i++)
+                    //        {
+                    //            int offsetX = i - half;
+                    //            BulletManager.Bullets.Add((Player.Snake[0].x + offsetX, Player.Snake[0].y));
+                    //        }
+                    //        if (SkillManager.HasSkill(SkillType.ContinuousShot))
+                    //        {
+                    //            int level = SkillManager.GetSkillLevel(SkillType.ContinuousShot);
+                    //            foreach (var b in BulletManager.Bullets.ToArray())
+                    //            {
+                    //                BulletManager.ContinuousBullets[b] = level;
+                    //            }
+                    //        }
+                            
+                    //        if (SkillManager.HasSkill(SkillType.ContinuousShot))
+                    //        {
+                    //            int level = SkillManager.GetSkillLevel(SkillType.ContinuousShot);
+                    //            foreach (var b in BulletManager.Bullets.ToArray())
+                    //            {
+                    //                BulletManager.ContinuousBullets[b] = level;
+                    //            }
+                    //        }
+                    //        Player.Snake.RemoveAt(Player.Snake.Count - 1);
+                    //    }
+                    //}
+                    break;
+                case ConsoleKey.C:
+                    //if (SkillManager.HasSkill(SkillType.Clone) && CloneManager.CloneCooldown <= 0)
+                    //{
+                    //    bool spawned = false;
+                    //    for (int dy = -1; dy <= 1; dy++)
+                    //    {
+                    //        for (int dx = -1; dx <= 1; dx++)
+                    //        {
+                    //            int nx = Player.Snake[0].x + dx;
+                    //            int ny = Player.Snake[0].y + dy;
+                    //            if (nx > 0 && nx < GameManager.Width - 1 && ny > 0 && ny < GameManager.Height - 1 &&
+                    //                MapManager.Map[ny, nx] == ' ')
+                    //            {
+                    //                CloneManager.Clones.Add((nx, ny));
+                    //                CloneManager.CloneCooldown = 100;
+                    //                spawned = true;
+                    //                break;
+                    //            }
+                    //        }
+                    //        if (spawned) break;
+                    //    }
+                    //}
+                    break;
             }
         }
     }

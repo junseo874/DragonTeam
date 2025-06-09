@@ -1,21 +1,24 @@
-﻿using System;
+﻿using SnakeGameRefactored;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-class ExpManager
+namespace SnakeGameRefactored
 {
-    public static ExpManager Instance = new ExpManager();
-    private Random rand = new Random();
-
-    private ExpManager() { }
-
-    public void GenerateExpChar()
+    // ExpManager: 경험치 아이템 생성
+    public static class ExpManager
     {
-        if (rand.NextDouble() < 0.1)
+        public static void GenerateExpChar()
         {
-            int x = rand.Next(1, GameManager.Width - 1);
-            int y = rand.Next(GameManager.Height / 2, GameManager.Height - 2);
-
-            if (MapManager.Instance.GetCharAt(y, x) == ' ')
-                MapManager.Instance.SetCharAt(y, x, '*');
+            if (GameManager.Rand.NextDouble() < 0.1)
+            {
+                int x = GameManager.Rand.Next(1, GameManager.Width - 1);
+                int y = GameManager.Rand.Next(GameManager.Height / 2, GameManager.Height - 2);
+                if (MapManager.Map[y, x] == ' ')
+                    MapManager.Map[y, x] = '*';
+            }
         }
     }
 }
