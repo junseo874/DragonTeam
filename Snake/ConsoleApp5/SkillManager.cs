@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-
+//테스트
 class SkillManager
 {
     public static SkillManager Instance = new SkillManager();
