@@ -3,6 +3,7 @@
 class MapManager
 {
     //.
+    //진자 ㅈㄴ피곤하다
     public static MapManager Instance = new MapManager();
     private char[,] map;
 
