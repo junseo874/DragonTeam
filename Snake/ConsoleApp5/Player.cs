@@ -36,14 +36,14 @@ namespace SnakeGameRefactored
                 GameManager.Exp++;
                 MapManager.Map[newHead.y, newHead.x] = ' ';
                 Snake.Insert(0, newHead);
-                if (SkillManager.HasSkill(SkillType.Heal))
-                {
-                    int healCount = SkillManager.GetSkillLevel(SkillType.Heal);
-                    for (int i = 0; i < healCount; i++)
-                    {
-                        Snake.Add((Snake[^1].x - DirX, Snake[^1].y - DirY));
-                    }
-                }
+                //if (SkillManager.HasSkill(SkillType.Heal))
+                //{
+                //    int healCount = SkillManager.GetSkillLevel(SkillType.Heal);
+                //    for (int i = 0; i < healCount; i++)
+                //    {
+                //        Snake.Add((Snake[^1].x - DirX, Snake[^1].y - DirY));
+                //    }
+                //}
             }
             else
             {
