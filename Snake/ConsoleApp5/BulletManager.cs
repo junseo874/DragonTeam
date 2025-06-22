@@ -58,7 +58,7 @@ class BulletManager
             }
         }
 
-        // 연속 발사 탄환 업데이트!
+        // 연속 발사 탄환 업데이트!!
         if (continuousBullets.Count > 0)
         {
             var toRemove = new List<(int x, int y)>();
