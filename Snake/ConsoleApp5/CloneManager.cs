@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+// 테스트
 namespace SnakeGameRefactored
 { // CloneManager: 복제체 관련 처리
     public static class CloneManager
