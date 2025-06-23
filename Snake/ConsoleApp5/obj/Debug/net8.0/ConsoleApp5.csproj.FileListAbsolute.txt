@@ -12,3 +12,11 @@ C:\Users\hyeon-210-32\source\repos\ConsoleApp5\ConsoleApp5\obj\Debug\net8.0\refi
 C:\Users\hyeon-210-32\source\repos\ConsoleApp5\ConsoleApp5\obj\Debug\net8.0\ConsoleApp5.pdb
 C:\Users\hyeon-210-32\source\repos\ConsoleApp5\ConsoleApp5\obj\Debug\net8.0\ConsoleApp5.genruntimeconfig.cache
 C:\Users\hyeon-210-32\source\repos\ConsoleApp5\ConsoleApp5\obj\Debug\net8.0\ref\ConsoleApp5.dll
+C:\Users\rhehg\OneDrive\문서\GitHub\DragonTeam\Snake\ConsoleApp5\obj\Debug\net8.0\ConsoleApp5.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rhehg\OneDrive\문서\GitHub\DragonTeam\Snake\ConsoleApp5\obj\Debug\net8.0\ConsoleApp5.AssemblyInfoInputs.cache
+C:\Users\rhehg\OneDrive\문서\GitHub\DragonTeam\Snake\ConsoleApp5\obj\Debug\net8.0\ConsoleApp5.AssemblyInfo.cs
+C:\Users\rhehg\OneDrive\문서\GitHub\DragonTeam\Snake\ConsoleApp5\obj\Debug\net8.0\ConsoleApp5.csproj.CoreCompileInputs.cache
+C:\Users\rhehg\OneDrive\문서\GitHub\DragonTeam\Snake\ConsoleApp5\obj\Debug\net8.0\ConsoleApp5.sourcelink.json
+C:\Users\rhehg\OneDrive\문서\GitHub\DragonTeam\Snake\ConsoleApp5\obj\Debug\net8.0\ConsoleApp5.dll
+C:\Users\rhehg\OneDrive\문서\GitHub\DragonTeam\Snake\ConsoleApp5\obj\Debug\net8.0\refint\ConsoleApp5.dll
+C:\Users\rhehg\OneDrive\문서\GitHub\DragonTeam\Snake\ConsoleApp5\obj\Debug\net8.0\ConsoleApp5.pdb
