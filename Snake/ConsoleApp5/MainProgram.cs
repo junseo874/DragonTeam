@@ -44,7 +44,7 @@ class MainProgram
                 GameManager.Instance.Tick++;
             }
 
-            // 게임 오버 화면 표시!
+            // 게임 오버 화면 표시!!
             if (!GameManager.Instance.ShowGameOver()) break;
         }
     }
